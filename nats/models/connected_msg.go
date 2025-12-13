@@ -22,17 +22,23 @@ type UserOnlineMsg struct {
 	IsOnline bool `json:"is_online"`
 }
 
-// PresenceStatusEvent — единый формат события статуса пользователя в NATS.
-// Публикуется в фиксированный subject presence.events.status.
 type PresenceStatusEvent struct {
 	UserID    int64     `json:"user_id"`
 	IsOnline  bool      `json:"is_online"`
 	Timestamp time.Time `json:"timestamp"`
 }
 
-// PresenceHeartbeatMsg — heartbeat от gateway к presence-service.
-// Используется, чтобы продлевать online TTL и обновлять last_seen.
 type PresenceHeartbeatMsg struct {
 	UserID    int64     `json:"user_id"`
 	Timestamp time.Time `json:"timestamp"`
+}
+
+type MessageCreatedEvent struct {
+	ID          string `json:"message_id"`
+	Content     string `json:"content"`
+	ChatID      string `json:"chat_id"`
+	CreatedAt   int64  `json:"created_at"`
+	UpdatedAt   *int64 `json:"updated_at"`
+	MessageType string `json:"message_type"`
+	Status      string `json:"status"`
 }
