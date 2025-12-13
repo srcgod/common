@@ -41,4 +41,5 @@ type MessageCreatedEvent struct {
 	UpdatedAt   *int64 `json:"updated_at"`
 	MessageType string `json:"message_type"`
 	Status      string `json:"status"`
+	SenderID int64 `json:"sender_id"`
 }
